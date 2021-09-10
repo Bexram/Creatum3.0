@@ -11,6 +11,7 @@ import OurClients from '@/store/OurClients'
 import OurClients1 from '@/store/OurClients1'
 import Crew from '@/store/Crew'
 import Common from '@/store/Common'
+import Backend from '@/store/Backend'
 
 Vue.use(Vuex)
 
@@ -26,6 +27,8 @@ export default new Vuex.Store({
     OurClients,
     OurClients1,
     Crew,
-    Common
-  }
+    Common,
+    Backend
+  },
+
 })

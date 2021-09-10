@@ -14,6 +14,7 @@ import HowWeDo from '@/views/HowWeDo.vue';
 import ForWho from '@/views/ForWho.vue';
 import Crew from '@/views/Crew.vue';
 import GladToWork from '@/views/GladToWork.vue';
+
 export default {
   name: 'main1',
   components: {
@@ -22,7 +23,13 @@ export default {
     ForWho,
     Crew,
     GladToWork
-  }
+  },
+
+  created() {
+    this.$store.dispatch('Backend/GET_CONTENT')
+  },
+
+
 }
 </script>
 <style>

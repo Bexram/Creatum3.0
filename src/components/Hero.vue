@@ -5,39 +5,49 @@
     <img class='cube cube-2' src="../assets/cube2.png" alt="">
     <img class='cube cube-3' src="../assets/cube3.png" alt="">
 
-    <h2 class='wow animate__animated animate__fadeInLeft'>
-
-      Мы создаем <span>впечатления</span> и помогаем брендам с  <span>digital-задачами.</span>
-
+    <template v-for="el in header">
+    <h2 class='wow animate__animated animate__fadeInLeft'
+        v-if="el.name=='h2'"
+        v-html="el.text">
     </h2>
+      </template>
+    <hr>
+
+    <template v-for="el in header">
+    <p class='wow animate__animated animate__fadeInRight'
+       v-if="el.name=='p1'"
+       v-html="el.text">
+    </p>
+    </template>
 
     <hr>
 
-    <p class='wow animate__animated animate__fadeInRight'>
-      Фундаментально базируемся на отлаженных процессах, положительном возврате инвестиций в рекламу и партнерских отношениях с нашими клиентами.
-
-    </p>
-
-    <hr>
-
-    <p class='wow animate__animated animate__fadeInLeft'>
-    Внутри команд сочетаем опытных экспертов и драйв молодых специалистов.
-
-
-    </p>
+    <template v-for="el in header">
+      <p class='wow animate__animated animate__fadeInLeft'
+         v-if="el.name=='p2'"
+         v-html="el.text">
+      </p>
+    </template>
 
   </div>
 </template>
 
 <script>
 import anime from 'animejs'
+import {mapGetters} from 'vuex';
 export default {
   name: 'Hero',
   components: {
     anime
   },
+  computed: {
+    ...mapGetters('Backend', {
+      header: 'HEADER',
+    })
+  },
   mounted(){
-   
+
+
     anime({
       targets: 'h2',
     }),
@@ -68,7 +78,7 @@ export default {
       easing: 'linear',
       rotate: 10
     })
-  }
+  },
 }
 </script>
 
