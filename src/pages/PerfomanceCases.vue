@@ -3,37 +3,35 @@
   <div class="cases">
     <HeaderClose
       path='/'
-      title="Branding Cases"
+      title="Perfomance Cases"
       />
-    <div class="p-0  justify-content-between container-fluid d-flex flex-wrap">
-      <div class="case d-flex justify-content-center align-items-center" v-for='(item,index) in brandingcase' :key='item.name'>
-
+    <div class="p-0 justify-content-between container-fluid d-flex flex-wrap">
+      <div class="case d-flex justify-content-center align-items-center" v-for='(item,index) in perfomancecases' :key='item.name'>
         <Cases
         :name="item.name"
-        :path="/BrandingCase/"
+        :path="/PerfomanceCase/"
         :index="index"
         :date="item.date"
         :img="item.preview"
         />
-
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import HeaderClose from '@/components/Header-close.vue'
-import { mapGetters } from 'vuex';
+import HeaderClose from '@/components/Header-close.vue';
 import Cases from '@/components/Cases';
+import { mapGetters } from 'vuex';
 export default {
-  name: 'Brandingcases',
+  name: 'Perfomance',
   components: {
     HeaderClose,
     Cases,
   },
    computed: {
     ...mapGetters('Backend', {
-      brandingcase: 'BRANDINGCASES',
+      perfomancecases: 'PERFOMANCECASES',
     })
   },
     mounted () {

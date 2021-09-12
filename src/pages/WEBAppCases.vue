@@ -3,15 +3,14 @@
   <div class="cases">
     <HeaderClose
       path='/'
-      title="Mobile UI Cases"
+      title="Web and Apps Cases"
       />
-      <Vfade/>
-    <div class="p-0 blur justify-content-between container-fluid d-flex flex-wrap">
-      <div class="case d-flex justify-content-center align-items-center" v-for='(item,index) in MobileUIcases' :key='item.name'>
+    <div class="p-0  justify-content-between container-fluid d-flex flex-wrap">
+      <div class="case d-flex justify-content-center align-items-center" v-for='(item,index) in webcases' :key='item.name'>
 
         <Cases
         :name="item.name"
-        :path="/MobileUICase/"
+        :path="/WebCase/"
         :index="index"
         :date="item.date"
         :img="item.preview"
@@ -24,20 +23,17 @@
 
 <script>
 import HeaderClose from '@/components/Header-close.vue'
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 import Cases from '@/components/Cases';
-import Vfade from '@/components/FadeSoon';
 export default {
-  name: 'SMMcases',
+  name: 'WebAppCases',
   components: {
     HeaderClose,
     Cases,
-    Vfade
   },
   computed: {
-    ...mapState({
-    //   SMMCases: state => state.SMMCases.casesSMM
-    MobileUIcases: state => state.MobileUICases.casesMobileUI
+    ...mapGetters('Backend', {
+      webcases: 'WEBCASES',
     })
   },
     mounted () {

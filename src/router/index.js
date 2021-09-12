@@ -37,31 +37,31 @@ const routes = [
     props: true
   },
   {
-    path: '/WEBUIs',
-    name: 'WEBUIs',
-    component: () => import('../pages/WEBUIs')
+    path: '/PerfomanceCases',
+    name: 'PerfomanceCases',
+    component: () => import('../pages/PerfomanceCases.vue')
   },
   {
-    path: '/WEBUIcase/:id',
-    name: 'WEBUICase',
-    component: () => import('../pages/WEBUIcase.vue'),
+    path: '/PerfomanceCase/:id',
+    name: 'PerfomanceCase',
+    component: () => import('../pages/PerfomanceCase.vue'),
     props: true
   },
   {
-    path: '/MobileUIs',
-    name: 'MobileUIs',
-    component: () => import('../pages/MobileUIs')
+    path: '/WebAppCases',
+    name: 'WebAppCases',
+    component: () => import('../pages/WEBAppCases.vue')
   },
   {
-    path: '/MobileUIcase/:id',
-    name: 'MobileUIcase',
-    component: () => import('../pages/MobileUIcase.vue'),
+    path: '/WebAppCase/:id',
+    name: 'WebAppCase',
+    component: () => import('../pages/WEBAppCase.vue'),
     props: true
   },
   {
     path: '/BrandingCases',
     name: 'BrandingCases',
-    component: () => import('../pages/BrandingCases')
+    component: () => import('../pages/BrandingCases.vue')
   },
   {
     path: '/Brandingcase/:id',

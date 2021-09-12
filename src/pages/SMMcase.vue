@@ -6,7 +6,7 @@
       />
       <div class="container-fluid p-0">
           <iframe 
-          :src="SMMCases[id].template"
+          :src="SMMCases[id].file"
         ></iframe>
       </div>
   </div>
@@ -28,7 +28,7 @@ export default {
   },
     computed: {
         ...mapState({
-         SMMCases: state => state.SMMCases.casesSMM
+         SMMCases: state => state.Backend.smmcases
     })
   }
 

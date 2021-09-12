@@ -34,7 +34,7 @@ export default {
           title: 'Performance',
           descripton: 'Настраиваем прибыльные рекламные кампании через facebook и google ads. Фокусируемся на высоком ROAS, и положительном  ROMI.',
           img: require('../assets/WebUI.png'),
-          url: '/WEBUIs'
+          url: '/PerfomanceCases'
         },
         {
           title: 'Branding',
@@ -46,7 +46,7 @@ export default {
           title: 'Websites & Apps',
           descripton: 'Разрабатываем нативные сайты и мобильные приложения с фокусом на оптимальные пользовательские интерфейсы. Производим аудит и редизайн существующих решений.',
           img: require('../assets/MobileUI.png'),
-          url: '/MobileUIs'
+          url: '/WebAppCases'
         },
         
       ]
