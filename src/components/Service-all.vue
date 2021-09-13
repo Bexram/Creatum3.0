@@ -1,14 +1,14 @@
 <template>
   <div class="Service d-flex justify-content-between  flex-lg-row flex-column">
     <div
-    v-for="Service in Services"
-    :key="Service.title"
+    v-for="Service in services"
+    :key="Service.id"
     class='item d-flex flex-column align-items-start justify-content-end'
     >
-    <img class='w-100 h-100' :src="Service.img" alt="">
-    <h3>{{Service.title}}</h3>
-    <p class='service_description'>{{Service.descripton}}</p>
-    <router-link :to="Service.url">
+    <img class='w-100 h-100' :src="Service.file[0].file" alt="">
+    <h3>{{Service.name}}</h3>
+    <p class='service_description'>{{Service.text.split('/')[0]}}</p>
+    <router-link :to="Service.text.split('/')[1]">
       <button class='button button_purple'>Подробнее</button>
     </router-link>
     <!-- <a :href="Service.url">
@@ -19,39 +19,17 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
   name: 'Servive',
-  data() {
-    return {
-      Services: [
-        {
-          title: 'SMM',
-          descripton: 'Создаем уникальный контент, чтобы охватить как можно больше целевых пользователей. Повышаем вовлеченности и лояльность аудиторий.',
-          img: require('../assets/SMM.png'),
-          url: '/SMMcases'
-        },
-        {
-          title: 'Performance',
-          descripton: 'Настраиваем прибыльные рекламные кампании через facebook и google ads. Фокусируемся на высоком ROAS, и положительном  ROMI.',
-          img: require('../assets/WebUI.png'),
-          url: '/PerfomanceCases'
-        },
-        {
-          title: 'Branding',
-          descripton: 'Придумываем универсальные сочетания Логотипов и шрифтов, выделяющие из толпы. Прорабатываем расположение на атрибутике разного формата.',
-          img: require('../assets/Branding.png'),
-          url: '/BrandingCases'
-        },
-        {
-          title: 'Websites & Apps',
-          descripton: 'Разрабатываем нативные сайты и мобильные приложения с фокусом на оптимальные пользовательские интерфейсы. Производим аудит и редизайн существующих решений.',
-          img: require('../assets/MobileUI.png'),
-          url: '/WebAppCases'
-        },
-        
-      ]
-    }
-  }
+
+
+  computed: {
+    ...mapGetters('Backend', {
+      services: 'SERVICES',
+    })
+  },
 }
 </script>
 

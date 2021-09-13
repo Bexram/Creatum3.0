@@ -33,7 +33,7 @@ export default {
   },
    computed: {
     ...mapGetters('Backend', {
-      brandingcase: 'BRANDINGCASES',
+      brandingcase: 'BRANDIBGCASES',
     })
   },
     mounted () {

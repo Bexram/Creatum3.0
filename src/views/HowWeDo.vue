@@ -28,74 +28,97 @@
       ref="primary"
       class='p-lg-0 p-2 wow animate__animated animate__fadeInRight'
       >
-        <splide-slide>          
+        <splide-slide>
+          <template  v-for='SMM in howwedo'>
         <div class="cell d-flex align-items-center justify-content-between"
-        v-for='SMM in SMMs' :key="SMM.title">
-        <p>{{SMM.title}}</p>
+           v-if="SMM.name.split('.')[0]=='SMM'"
+           :key="SMM.name.split('.')[1]">
+        <p>{{SMM.text.split('.')[0]}}</p>
         <div class="time">
-          <span>{{SMM.time.substring(0,2)}}</span>
-          {{SMM.time.replace(/[0-9]/g, '')}}
+          <span>{{SMM.text.split('.')[1].substring(0,2)}}</span>
+          {{SMM.text.split('.')[1].replace(/[0-9]/g, '')}}
+
           <!-- <span class='submit'></span> -->
         </div>
         </div>
-        <div class="cell cell_total d-flex align-items-center justify-content-between">
+
+        <div class="cell cell_total d-flex align-items-center justify-content-between"
+        v-if="SMM.name=='SMMtotal'">
         <p>Итого</p>
         <div class="time">
-          <span>52</span>
-          дня
+          <span>{{SMM.text.substring(0,2)}}</span>
+          {{SMM.text.replace(/[0-9]/g, '')}}
         </div>
         </div>
+          </template>
       </splide-slide>
       <splide-slide>
+        <template   v-for='web_app in howwedo'>
         <div class="cell d-flex align-items-center justify-content-between"
-        v-for='web_app in Web_apps' :key="web_app.title">
-        <p>{{web_app.title}}</p>
+             v-if="web_app.name.split('.')[0]=='Web'"
+            :key="web_app.name.split('.')[1]">
+        <p>{{web_app.text.split('.')[0]}}</p>
         <div class="time">
-          <span>{{web_app.time.substring(0,2)}}</span>
-          {{web_app.time.replace(/[0-9]/g, '')}}
+          <span>{{web_app.text.split('.')[1].substring(0,2)}}</span>
+          {{web_app.text.split('.')[1].replace(/[0-9]/g, '')}}
         </div>
         </div>
-        <div class="cell cell_total d-flex align-items-center justify-content-between">
+
+        <div class="cell cell_total d-flex align-items-center justify-content-between"
+             v-if="web_app.name=='Webtotal'">
         <p>Итого</p>
-        <div class="time">
-          <span>70</span>
-          дней
+          <div class="time">
+            <span>{{web_app.text.substring(0,2)}}</span>
+            {{web_app.text.replace(/[0-9]/g, '')}}
+          </div>
         </div>
-        </div>
+        </template>
       </splide-slide>
       <splide-slide>
+        <template    v-for="branding in howwedo">
         <div class="cell d-flex align-items-center justify-content-between"
-        v-for="branding in Brandings" :key="branding.title">
-          <p>{{branding.title}}</p>
+             v-if="branding.name.split('.')[0]=='Branding'"
+        :key="branding.name.split('.')[1]">
+          <p>{{branding.text.split('.')[0]}}</p>
         <div class="time">
-          <span>{{branding.time.substring(0,2)}}</span>
-          {{branding.time.replace(/[0-9]/g, '')}}
+          <span>{{branding.text.split('.')[1].substring(0,2)}}</span>
+          {{branding.text.split('.')[1].replace(/[0-9]/g, '')}}
         </div>
         </div>
-        <div class="cell cell_total d-flex align-items-center justify-content-between">
+
+        <div class="cell cell_total d-flex align-items-center justify-content-between"
+             v-if="branding.name=='Brandingtotal'"
+        >
         <p>Итого</p>
-        <div class="time">
-          <span>29</span>
-          дней
+          <div class="time">
+            <span>{{branding.text.substring(0,2)}}</span>
+            {{branding.text.replace(/[0-9]/g, '')}}
+          </div>
         </div>
-        </div>
+        </template>
       </splide-slide>
       <splide-slide>
+        <template  v-for="performance in howwedo">
         <div class="cell d-flex align-items-center justify-content-between"
-        v-for="performance in Performances" :key="performance.title">
-          <p>{{performance.title}}</p>
+             v-if="performance.name.split('.')[0]=='Perfomance'"
+         :key="performance.name.split('.')[1]">
+          <p>{{performance.text.split('.')[0]}}</p>
         <div class="time">
-          <span>{{performance.time.substring(0,2)}}</span>
-          {{performance.time.replace(/[0-9]/g, '')}}
+          <span>{{performance.text.split('.')[1].substring(0,2)}}</span>
+          {{performance.text.split('.')[1].replace(/[0-9]/g, '')}}
         </div>
         </div>
-        <div class="cell cell_total d-flex align-items-center justify-content-between">
+
+        <div class="cell cell_total d-flex align-items-center justify-content-between"
+             v-if="performance.name=='Perfomancetotal'"
+        >
         <p>Итого</p>
-        <div class="time">
-          <span>28</span>
-          дня
+          <div class="time">
+            <span>{{performance.text.substring(0,2)}}</span>
+            {{performance.text.replace(/[0-9]/g, '')}}
+          </div>
         </div>
-        </div>
+        </template>
       </splide-slide>
       </splide>
     </div>
@@ -110,7 +133,7 @@
 <script>
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 export default {
   name: 'HowWeDo',
   components: {
@@ -157,14 +180,11 @@ export default {
     mounted() {
       this.$refs.primary.sync( this.$refs.secondary.splide );
     },
-    computed: {
-      ...mapState({
-        SMMs: state => state.HowWeDo.SMMs,
-        Web_apps: state => state.HowWeDo.Web_apps,
-        Brandings: state => state.HowWeDo.Brandings,
-        Performances: state => state.HowWeDo.Performances
-      })
-    }
+  computed: {
+    ...mapGetters('Backend', {
+      howwedo: 'HOWWEDO',
+    })
+  },
 }
 </script>
 

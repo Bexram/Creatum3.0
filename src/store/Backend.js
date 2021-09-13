@@ -7,6 +7,7 @@ const state = () => ({
     brandingcases: [],
     webcases: [],
     performancecases: [],
+    howwedo: [],
 
 })
 
@@ -28,6 +29,11 @@ const getters = {
     },
     PERFOMANCECASES(state) {
         return state.performancecases;
+    },
+    HOWWEDO(state) {
+        return state.howwedo.sort(function(a,b){if (a.name < b.name) return -1;
+            if (a.name > b.name) return 1;
+            return 0;});
     },
 }
 
@@ -59,6 +65,9 @@ const mutations = {
                 }
                 if(content[0].blocks[i].name=='service'){
                     state.services=content[0].blocks[i].contents
+                }
+                if(content[0].blocks[i].name=='howwedo'){
+                    state.howwedo=content[0].blocks[i].contents
                 }
             }
         },
