@@ -28,6 +28,7 @@ export default {
   created() {
     this.$store.dispatch('Backend/GET_CONTENT')
     this.$store.dispatch('Backend/GET_CASES')
+    this.$store.dispatch('Backend/GET_CLIENTS')
   },
 
 

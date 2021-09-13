@@ -33,51 +33,53 @@
         >
         <splide-slide>
           <div class="d-flex flex-wrap justify-content-between justify-content-lg-start">
-            <div v-for="icon in icons" :key=icon.index class='icon-icon'>
+            <div v-for="icon in icons" :key=icon.id class='icon-icon'>
               <div 
               class='d-flex align-items-center justify-content-center icon-cell'>
-                <img class='d-block' :src="icon.img" alt=""></div>
+                <img class='d-block' :src="icon.logo" alt=""></div>
             </div>
           </div>
         </splide-slide>
         <splide-slide>
           <div class="d-flex flex-wrap justify-content-between justify-content-lg-start">
-            <div v-for="icon in icons" :key=icon.index>
-              <div 
+            <div v-for="icon in icons" :key=icon.id>
+              <div
                 class='d-flex align-items-center justify-content-center '
-                :class="{'icon-cell': icon.theme.includes('SMM'),
-                 'grey-block' : !icon.theme.includes('SMM')} " >
-                 <img class='d-block' :src="icon.img" alt=""></div>
+                :class="{'icon-cell': icon.works=='1',
+                 'grey-block' : icon.works!='1'} " >
+                 <img class='d-block' :src="icon.logo" alt=""></div>
             </div>
           </div>
         </splide-slide>
         <splide-slide>
           <div class="d-flex flex-wrap justify-content-between justify-content-lg-start">
-            <div v-for="icon in icons" :key=icon.index>
-              <div 
+            <div v-for="icon in icons" :key=icon.id>
+              <div
               class='d-flex align-items-center justify-content-center'
-              :class="{'icon-cell': icon.theme.includes('Web-sites'),
-               'grey-block' : !icon.theme.includes('Web-sites') }"><img class='d-block' :src="icon.img" alt=""></div>
+              :class="{'icon-cell': icon.works=='2',
+               'grey-block' : icon.works!='2' }"><img class='d-block' :src="icon.logo" alt=""></div>
             </div>
           </div>
         </splide-slide>
+
         <splide-slide>
           <div class="d-flex flex-wrap justify-content-between justify-content-lg-start">
-            <div v-for="icon in icons" :key=icon.index >
-              <div 
-              :class="{'d-flex align-items-center justify-content-center icon-cell': icon.theme.includes('Branding'),
-               'grey-block' : !icon.theme.includes('Branding') }">
-                <img class='d-block' :src="icon.img" alt=""></div>
+            <div v-for="icon in icons" :key=icon.id >
+              <div
+              :class="{'d-flex align-items-center justify-content-center icon-cell': icon.works=='3',
+               'grey-block' : icon.works!='3' }">
+                <img class='d-block' :src="icon.logo" alt=""></div>
             </div>
           </div>
         </splide-slide>
+
         <splide-slide>
           <div class="d-flex flex-wrap justify-content-between justify-content-lg-start">
-            <div v-for="icon in icons" :key=icon.index >
-              <div 
-              :class="{'d-flex align-items-center justify-content-center icon-cell': icon.theme.includes('Performance'),
-               'grey-block' : !icon.theme.includes('Performance') }">
-                <img class='d-block' :src="icon.img" alt=""></div>
+            <div v-for="icon in icons" :key=icon.id >
+              <div
+              :class="{'d-flex align-items-center justify-content-center icon-cell': icon.works=='4',
+               'grey-block' : icon.works!='4' }">
+                <img class='d-block' :src="icon.logo" alt=""></div>
             </div>
           </div>
         </splide-slide>
@@ -90,7 +92,7 @@
 <script>
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 export default {
   name: 'OurClients',
   components: {
@@ -138,13 +140,12 @@ export default {
   mounted() {
     this.$refs.primary.sync( this.$refs.secondary.splide );
     let SMMIcons = false;
-    console.log(typeof(this.icons[0].theme))
   },
   computed: {
-    ...mapState({
-      icons: state => state.OurClients.icons
+    ...mapGetters('Backend', {
+      icons: 'CLIENTS',
     })
-  }
+  },
 }
 </script>
 

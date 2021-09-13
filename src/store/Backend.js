@@ -8,6 +8,7 @@ const state = () => ({
     webcases: [],
     performancecases: [],
     howwedo: [],
+    clients: [],
 
 })
 
@@ -34,6 +35,9 @@ const getters = {
         return state.howwedo.sort(function(a,b){if (a.name < b.name) return -1;
             if (a.name > b.name) return 1;
             return 0;});
+    },
+    CLIENTS(state) {
+        return state.clients;
     },
 }
 
@@ -71,6 +75,9 @@ const mutations = {
                 }
             }
         },
+        SET_CLIENTS: (state, content) => {
+            state.clients=content
+        }
     }
 
 const actions = {
@@ -96,6 +103,20 @@ const actions = {
             })
             .then((response) => {
                 commit("SET_CASES", response.data);
+                return response;
+            })
+            .catch((error) => {
+                console.log(error);
+                return error;
+            });
+        },
+        GET_CLIENTS({ commit } ) {
+        return axios({
+            method: "GET",
+            url: "http://localhost:8000/clients/",
+        })
+            .then((response) => {
+                commit("SET_CLIENTS", response.data);
                 return response;
             })
             .catch((error) => {
