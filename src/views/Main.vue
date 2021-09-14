@@ -29,6 +29,7 @@ export default {
     this.$store.dispatch('Backend/GET_CONTENT')
     this.$store.dispatch('Backend/GET_CASES')
     this.$store.dispatch('Backend/GET_CLIENTS')
+    this.$store.dispatch('Backend/GET_VACANCY')
   },
 
 

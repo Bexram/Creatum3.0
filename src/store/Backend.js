@@ -9,6 +9,7 @@ const state = () => ({
     performancecases: [],
     howwedo: [],
     clients: [],
+    vacancy: [],
 
 })
 
@@ -38,6 +39,9 @@ const getters = {
     },
     CLIENTS(state) {
         return state.clients;
+    },
+    VACANCY(state) {
+        return state.vacancy;
     },
 }
 
@@ -77,6 +81,9 @@ const mutations = {
         },
         SET_CLIENTS: (state, content) => {
             state.clients=content
+        },
+        SET_VACANCY: (state, content) => {
+            state.vacancy=content
         }
     }
 
@@ -124,6 +131,21 @@ const actions = {
                 return error;
             });
         },
+
+        GET_VACANCY({ commit } ) {
+        return axios({
+            method: "GET",
+            url: "http://localhost:8000/vacancy/",
+        })
+            .then((response) => {
+                commit("SET_VACANCY", response.data);
+                return response;
+            })
+            .catch((error) => {
+                console.log(error);
+                return error;
+            });
+    },
     }
 
 

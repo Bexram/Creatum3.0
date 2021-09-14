@@ -11,7 +11,7 @@
             </a>
             </div>
 
-            <h4>{{Vacancy[id].title}}</h4>
+            <h4>{{Vacancy[id].name}}</h4>
 
             <div></div>
         </div>
@@ -19,8 +19,8 @@
     </div>
       <div class="container">
           <div class="top">
-              <h3>Vacancies / {{Vacancy[id].subject}}</h3>
-              <h2>{{Vacancy[id].title}}</h2>
+              <h3>Vacancies / {{Vacancy[id].direction}}</h3>
+              <h2>{{Vacancy[id].name}}</h2>
               <p class='d-flex align-items-center'>
                   <svg
                    enable-background="new 0 0 64 64" 
@@ -40,21 +40,21 @@
             <p>
                {{Vacancy[id].description}}
             </p>
-            <ul class='d-flex flex-column align-items-start pl-2'>
+            <div class='d-flex flex-column align-items-start pl-2'>
                 <p style='font-weight: bolder;'>Обязанности:</p>
-                <li style='text-align:left;' v-for='duty in Vacancy[id].duties' :key='duty'>
+                <li style='text-align:left;' v-for='duty in Vacancy[id].duties.split(";")' :key='duty'>
                     {{duty}}
                 </li>
-            </ul>
+            </div>
              <ul class='d-flex flex-column align-items-start pl-2'>
                 <p style='font-weight: bolder;'>Требования:</p>
-                <li style='text-align:left;' v-for='demand in Vacancy[id].demands' :key='demand'>
-                    {{demand}}
-                </li>
+                 <li style='text-align:left;' v-for='req in Vacancy[id].requirements.split(";")' :key='req'>
+                     {{req}}
+                 </li>
             </ul>
             <ul class='d-flex flex-column align-items-start pl-2'>
                 <p style='font-weight: bolder;'>Условия:</p>
-                <li style='text-align:left;' v-for='condition in Vacancy[id].conditions' :key='condition'>
+                <li style='text-align:left;' v-for='condition in Vacancy[id].conditions.split(";")' :key='condition'>
                     {{condition}}
                 </li>
             </ul>
@@ -62,7 +62,7 @@
 
           <div class="bottom">
               <h4>About Creatum</h4>
-              <p>{{AboutCreatum.text}}</p>
+              <p>{{Vacancy[id].description}}</p>
           </div>
 
 
@@ -85,18 +85,17 @@
 <script>
 import axios from "axios";
 import HeaderClose from '@/components/Header-close.vue'
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 export default {
 name: 'Vacancy',
 components: {
     HeaderClose
 },
-computed: {
-    ...mapState({
-        AboutCreatum: state => state.Crew.AboutCreatum,
-        Vacancy: state => state.Crew.Vacancies
-    })
-},
+    computed: {
+        ...mapGetters('Backend', {
+            Vacancy: 'VACANCY',
+        })
+    },
 data() {
     return {
         post: '',
@@ -113,11 +112,11 @@ data() {
     applyForm() {
       axios({
         method: 'post',
-        url: 'https://mrgorlenko.pythonanywhere.com/api/employees/',
+        url: 'http://localhost:8000/form/',
         data: {
-          full_name: this.full_name,
+          name: this.full_name,
           email: this.email,
-          field: this.field,
+          other: 'Вакансия '+this.Vacancy[this.id].name+' '+this.field,
         }
       })
           .then(res => console.log(res))

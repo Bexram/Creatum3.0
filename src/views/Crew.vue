@@ -15,9 +15,9 @@
           :to="/Vacancy/+index"
           >       
             <div class="job-title">
-              <p>{{vacancy.title}} <span>({{vacancy.state}})</span> </p>
+              <p>{{vacancy.name}} <span>({{vacancy.state}})</span> </p>
             </div>
-            <p class='subject'>{{vacancy.subject.toUpperCase()}}</p>
+            <p class='subject'>{{vacancy.direction.toUpperCase()}}</p>
             <div class="place d-flex align-items-center justify-content-between">
               <img src="../assets/place.png" alt="">
               {{vacancy.location}}
@@ -31,12 +31,12 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+  import {mapGetters} from 'vuex';
 export default {
   name: 'Crew',
   computed: {
-    ...mapState({
-      Vacancies: state => state.Crew.Vacancies
+    ...mapGetters('Backend', {
+      Vacancies: 'VACANCY',
     })
   },
   methods:{
