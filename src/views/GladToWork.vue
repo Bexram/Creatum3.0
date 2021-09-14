@@ -36,13 +36,11 @@ export default {
     submitForm() {
       axios({
         method: 'post',
-        url: 'https://mrgorlenko.pythonanywhere.com/api/customers/',
+        url: 'http://localhost:8000/form/',
         data: {
-          full_name: this.full_name,
-          url: this.url,
+          name: this.full_name,
           email: this.email,
-          industry: this.industry,
-          text: this.text
+          other: 'Направление '+this.industry+'; Ссылка на сайт компании '+this.url+' Прочее '+this.text
         }
       })
           .then(res => {
