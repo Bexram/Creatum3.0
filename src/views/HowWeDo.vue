@@ -1,6 +1,7 @@
 <template>
   <div id="HowWeDo" class="HowWeDo">
-    <h2 class='wow animate__animated animate__fadeIn title'>How <span>we do</span></h2>
+    <h2 v-if="russian" class='wow animate__animated animate__fadeIn title'>Как <span>мы делаем</span></h2>
+    <h2 v-if="!russian" class='wow animate__animated animate__fadeIn title'>How <span>we do</span></h2>
     <img class='cube' src="../assets/cube4.png" alt="">
     <div class="container p-lg-2 p-0">
 
@@ -133,7 +134,7 @@
 <script>
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
-import { mapGetters } from 'vuex';
+import {mapGetters, mapState} from 'vuex';
 export default {
   name: 'HowWeDo',
   components: {
@@ -181,6 +182,9 @@ export default {
       this.$refs.primary.sync( this.$refs.secondary.splide );
     },
   computed: {
+    ...mapState({
+      russian: state => state.Common.russian,
+    }),
     ...mapGetters('Backend', {
       howwedo: 'HOWWEDO',
     })

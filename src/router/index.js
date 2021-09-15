@@ -31,21 +31,9 @@ const routes = [
     component: () => import('../pages/SMMcases.vue')
   },
   {
-    path: '/SMMcase/:id',
-    name: 'SMMCase',
-    component: () => import('../pages/SMMcase.vue'),
-    props: true
-  },
-  {
     path: '/PerfomanceCases',
     name: 'PerfomanceCases',
     component: () => import('../pages/PerfomanceCases.vue')
-  },
-  {
-    path: '/PerfomanceCase/:id',
-    name: 'PerfomanceCase',
-    component: () => import('../pages/PerfomanceCase.vue'),
-    props: true
   },
   {
     path: '/WebAppCases',
@@ -53,21 +41,9 @@ const routes = [
     component: () => import('../pages/WEBAppCases.vue')
   },
   {
-    path: '/WebAppCase/:id',
-    name: 'WebAppCase',
-    component: () => import('../pages/WEBAppCase.vue'),
-    props: true
-  },
-  {
     path: '/BrandingCases',
     name: 'BrandingCases',
     component: () => import('../pages/BrandingCases.vue')
-  },
-  {
-    path: '/Brandingcase/:id',
-    name: 'BrandingCase',
-    component: () => import('../pages/BrandingCase.vue'),
-    props: true
   },
   {
     path: '/Vacancy/:id',

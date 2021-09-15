@@ -9,23 +9,24 @@
     <h3>{{Service.name}}</h3>
     <p class='service_description'>{{Service.text.split('/')[0]}}</p>
     <router-link :to="Service.text.split('/')[1]">
-      <button class='button button_purple'>Подробнее</button>
+      <button v-if="russian" class='button button_purple'>Подробнее</button>
+      <button v-if="!russian" class='button button_purple'>More</button>
     </router-link>
-    <!-- <a :href="Service.url">
-      <button class='button button_purple'>Подробнее</button>
-    </a> -->
     </div>
   </div>
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+  import {mapGetters, mapState} from "vuex";
 
 export default {
-  name: 'Servive',
+  name: 'Service',
 
 
   computed: {
+    ...mapState({
+      russian: state => state.Common.russian,
+    }),
     ...mapGetters('Backend', {
       services: 'SERVICES',
     })

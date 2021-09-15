@@ -1,8 +1,11 @@
 <template>
   <div name=Crew id=Crew class="JoinTheCrew">
     <div name="JoinCrew"></div>
-    <h2 class="title wow animate__animated animate__fadeInRight">
+    <h2 v-if="russian" class="title wow animate__animated animate__fadeInRight">
       Присоединяйтесь к <span>команде</span>
+    </h2>
+    <h2 v-if="!russian" class="title wow animate__animated animate__fadeInRight">
+      Join the <span>team</span>
     </h2>
     <div class="container">
       <div class="vacancies wow animate__animated animate__fadeInLeft">
@@ -31,12 +34,15 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex';
+  import {mapGetters, mapState} from 'vuex';
 export default {
   name: 'Crew',
   computed: {
     ...mapGetters('Backend', {
       Vacancies: 'VACANCY',
+    }),
+    ...mapState({
+      russian: state => state.Common.russian,
     })
   },
   methods:{

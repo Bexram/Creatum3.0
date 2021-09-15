@@ -70,7 +70,13 @@
         <form action="" class='d-flex justify-content-between flex-wrap' @submit.prevent="applyForm" method="post">
         <input class='short' type="text" placeholder="Полное имя" v-model="full_name">
         <input class='short' type="text" placeholder="Э-почта" v-model="email">
-        <input class='w-100' type="text" placeholder="Направление" v-model="field">
+            <select class='req short' v-model="field">
+                <option value="" disabled>Выберите направление</option>
+                <option value="SMM">SMM</option>
+                <option value="Web & Apps">Web & Apps</option>
+                <option value="Branding">Branding</option>
+                <option value="Perfomance">Perfomance</option>
+            </select>
         <div class='w-100 d-flex justify-content-lg-end justify-content-start'>
           <button class='button button_purple'>Отправить</button>
         </div>
@@ -112,7 +118,7 @@ data() {
     applyForm() {
       axios({
         method: 'post',
-        url: 'http://localhost:8000/form/',
+        url: 'http://134.0.113.121:8000/form/',
         data: {
           name: this.full_name,
           email: this.email,

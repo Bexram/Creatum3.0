@@ -5,9 +5,14 @@ const Common = {
     state: {
       mobileMenu:{
         isActive: false
-      }
+      },
+      russian: true
     },
     mutations: {
+      changeLang(state)
+      {
+        state.russian=!state.russian
+      }
     },
     actions: {
     },

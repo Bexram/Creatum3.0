@@ -10,6 +10,7 @@ const state = () => ({
     howwedo: [],
     clients: [],
     vacancy: [],
+    forwho: [],
 
 })
 
@@ -31,6 +32,9 @@ const getters = {
     },
     PERFOMANCECASES(state) {
         return state.performancecases;
+    },
+    FORWHO(state) {
+        return state.forwho;
     },
     HOWWEDO(state) {
         return state.howwedo.sort(function(a,b){if (a.name < b.name) return -1;
@@ -64,6 +68,7 @@ const mutations = {
                 if(content[i].works=='4'){
                     state.performancecases.push(content[i])
                 }
+
             }
         },
         SET_CONTENT: (state, content) => {
@@ -77,6 +82,9 @@ const mutations = {
                 if(content[0].blocks[i].name=='howwedo'){
                     state.howwedo=content[0].blocks[i].contents
                 }
+                if(content[0].blocks[i].name=='forwho'){
+                    state.forwho=content[0].blocks[i].contents
+                }
             }
         },
         SET_CLIENTS: (state, content) => {
@@ -88,10 +96,10 @@ const mutations = {
     }
 
 const actions = {
-        GET_CONTENT({ commit } ) {
+        GET_CONTENT({ commit }, id=1 ) {
             return axios({
                 method: "GET",
-                url: "http://localhost:8000/page/1/",
+                url: "http://134.0.113.121:8000/page/"+id+"/",
             })
             .then((response) => {
                 commit("SET_CONTENT", response.data);
@@ -106,7 +114,7 @@ const actions = {
         GET_CASES({ commit } ) {
             return axios({
                 method: "GET",
-                url: "http://localhost:8000/cases/",
+                url: "http://134.0.113.121:8000/cases/",
             })
             .then((response) => {
                 commit("SET_CASES", response.data);
@@ -120,7 +128,7 @@ const actions = {
         GET_CLIENTS({ commit } ) {
         return axios({
             method: "GET",
-            url: "http://localhost:8000/clients/",
+            url: "http://134.0.113.121:8000/clients/",
         })
             .then((response) => {
                 commit("SET_CLIENTS", response.data);
@@ -135,7 +143,7 @@ const actions = {
         GET_VACANCY({ commit } ) {
         return axios({
             method: "GET",
-            url: "http://localhost:8000/vacancy/",
+            url: "http://134.0.113.121:8000/vacancy/",
         })
             .then((response) => {
                 commit("SET_VACANCY", response.data);

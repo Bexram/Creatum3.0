@@ -1,7 +1,10 @@
 <template>
   <div class="OurClients">
-    <h2 class="title wow animate__animated animate__fadeIn">
+    <h2 v-if="russian" class="title wow animate__animated animate__fadeIn">
       Наши <span>клиенты</span>
+    </h2>
+    <h2 v-if="!russian" class="title wow animate__animated animate__fadeIn">
+      Our <span>clients</span>
     </h2>
       <div class="container p-lg-2 p-0">
       <div class="slider-navigation">
@@ -92,7 +95,7 @@
 <script>
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
-import { mapGetters } from 'vuex';
+import {mapGetters, mapState} from 'vuex';
 export default {
   name: 'OurClients',
   components: {
@@ -144,6 +147,9 @@ export default {
   computed: {
     ...mapGetters('Backend', {
       icons: 'CLIENTS',
+    }),
+    ...mapState({
+      russian: state => state.Common.russian,
     })
   },
 }

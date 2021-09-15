@@ -1,24 +1,27 @@
 <template>
   <div class="ForWhoWeAre">
-    <h2 class="title wow animated__animated animated__fadeIn">
+    <h2 v-if="russian" class="title wow animated__animated animated__fadeIn">
       Кому <span> мы подойдем</span>
+    </h2>
+    <h2 v-if="!russian" class="title wow animated__animated animated__fadeIn">
+      Who will <span>we suit</span>
     </h2>
     <div class="slide-wrapper d-lg-none slide-wrapped_mobile wow animated__animated animated__fadeInUp">
       <div
        v-for="item in forWho"
-        :key=item.title>
-          <h3>{{item.title}}</h3>
-          <p>{{item.paragraph}}</p>
+        :key=item.id>
+          <h3>{{item.name}}</h3>
+          <p>{{item.text}}</p>
       </div>
     </div>
     <div class="slide-wrapper d-lg-block d-none  wow animated__animated animated__fadeInUp">
       <splide :options="options">
         <splide-slide
         v-for="item in forWho"
-        :key=item.title
+        :key=item.id
         >
-          <h3>{{item.title}}</h3>
-          <p>{{item.paragraph}}</p>
+          <h3>{{item.name}}</h3>
+          <p>{{item.text}}</p>
         </splide-slide>
       </splide>
     </div>
@@ -63,7 +66,8 @@ export default {
   },
   computed: {
     ...mapState({
-      forWho: state => state.ForWho.forWho
+      forWho: state => state.Backend.forwho,
+      russian: state => state.Common.russian,
     })
   },
 }

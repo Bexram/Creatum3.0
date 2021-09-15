@@ -14,21 +14,47 @@
 
       <div class="navigation">
         <ul class='d-flex '>
-          <li><button 
+          <li><button v-if="russian"
           :class="{active: scrollPosition < actualHeight*1.8}" @click='goToBlock' 
-          class='button button_yellow' href="#WhatWeDo">What we do</button></li>
-          <li><button 
+          class='button button_yellow' href="#WhatWeDo">Что мы делаем</button>
+            <button v-if="!russian"
+                    :class="{active: scrollPosition < actualHeight*1.8}" @click='goToBlock'
+                    class='button button_yellow' href="#WhatWeDo">What we do</button>
+          </li>
+          <li><button v-if="russian"
           :class="{active: scrollPosition >= actualHeight*1.8 && scrollPosition < actualHeight*2.6}" @click='goToBlock' 
-          class='button button_yellow' href="#HowWeDo">How we do</button></li>
-          <li><button 
+          class='button button_yellow' href="#HowWeDo">Как мы делаем</button>
+            <button v-if="!russian"
+                    :class="{active: scrollPosition >= actualHeight*1.8 && scrollPosition < actualHeight*2.6}" @click='goToBlock'
+                    class='button button_yellow' href="#HowWeDo">How we do</button>
+          </li>
+          <li><button  v-if="russian"
           :class="{active: scrollPosition >= actualHeight*2.6 && scrollPosition <= actualHeight*4.6}" @click='goToBlock' 
-          class='button button_yellow' href="#ForWho">For who</button></li>
-          <li><button
+          class='button button_yellow' href="#ForWho">Для кого</button>
+            <button v-if="!russian"
+                    :class="{active: scrollPosition >= actualHeight*2.6 && scrollPosition <= actualHeight*4.6}" @click='goToBlock'
+                    class='button button_yellow' href="#ForWho">For who</button></li>
+          <li><button v-if="russian"
           :class="{active: scrollPosition >= actualHeight*4.6 && scrollPosition < actualHeight*5.5}" @click='goToBlock'
-           class='button button_yellow' href="#Crew">Join the crew</button></li>
+           class='button button_yellow' href="#Crew">Присоединяйся к команде</button>
+            <button v-if="!russian"
+                    :class="{active: scrollPosition >= actualHeight*4.6 && scrollPosition < actualHeight*5.5}" @click='goToBlock'
+                    class='button button_yellow' href="#Crew">Join the crew</button>
+          </li>
         </ul>
       </div>
-      <button @click='goToBlock' class='d-block request button button_purple' href="#GladToWork">Заявка</button>
+        <div class="navigation">
+          <ul class='d-flex '>
+        <li><button class='d-block request button button_purple' v-if="russian" v-on:click="goLang">
+          Ru
+        </button>
+        <button class='d-block request button button_purple' v-if="!russian" v-on:click="goLang">
+          En
+        </button></li>
+            <li><button v-if="russian" @click='goToBlock' class='d-block request button button_purple' href="#GladToWork">Заявка</button>
+      <button v-if="!russian" @click='goToBlock' class='d-block request button button_purple' href="#GladToWork">Request</button></li>
+          </ul>
+        </div>
     </div>
     <div id='navMobile' class='d-lg-none d-flex w-100 justify-content-between align-items-center'>
       <svg  @click='goToBlock' href="#WhatWeDo" width="44" height="40" viewBox="0 0 44 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,12 +79,12 @@
 <script>
 import VueScrollTo from 'vue-scrollto';
 import MobileMenu from '@/components/MobileMenu.vue'
-import { mapState } from 'vuex';
+import {mapGetters, mapMutations, mapState} from 'vuex';
 export default {
   data() {
     return {
       scrollPosition: null,
-      actualHeight: window.innerHeight
+      actualHeight: window.innerHeight,
     }
   },
   components:{
@@ -66,6 +92,14 @@ export default {
   },
 
   methods: {
+    ...mapMutations('Common',['changeLang']),
+    goLang: function(){
+      this.changeLang()
+      if (this.russian)
+        this.$store.dispatch('Backend/GET_CONTENT',1)
+      else
+        this.$store.dispatch('Backend/GET_CONTENT',2)
+    },
     goToBlock: function(event){
       let link = event.target.getAttribute('href')
       document.querySelector(link).scrollIntoView({ behavior: 'smooth', block: 'start'}) 
@@ -83,10 +117,18 @@ export default {
   },
   computed: {
     ...mapState({
-      MenuState: state => state.Common.mobileMenu
+      MenuState: state => state.Common.mobileMenu,
+      russian: state => state.Common.russian,
+    }),
+    ...mapGetters('Backend', {
+      header: 'HEADER',
     })
   },
   mounted() {
+    this.$watch(
+            'HEADER',
+            { deep: true }
+    );
     window.addEventListener('scroll', this.updateScroll);
     let head = document.getElementsByTagName('head')
     console.log(head.children)
