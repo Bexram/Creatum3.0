@@ -7,6 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@splidejs/vue-splide": "^0.3.5",
     "animate.css": "^4.1.1",
     "animejs": "^3.2.1",
     "axios": "^0.21.4",
@@ -15,7 +16,7 @@
     "core-js": "^3.6.5",
     "pdfjs": "^2.4.2",
     "register-service-worker": "^1.7.1",
-    "swiper": "^6.8.4",
+    "swiper": "^6.3.5",
     "vue": "^2.6.12",
     "vue-awesome-swiper": "^4.1.1",
     "vue-pdf": "^4.2.0",
