@@ -15,58 +15,56 @@
       </div>
     </div>
     <div class="slide-wrapper d-lg-block d-none  wow animated__animated animated__fadeInUp">
-      <splide :options="options">
-        <splide-slide
+      <swiper ref="mySwiper" :options="swiperOptions">
+        <swiper-slide
         v-for="item in forWho"
         :key=item.id
         >
           <h3>{{item.name}}</h3>
           <p>{{item.text}}</p>
-        </splide-slide>
-      </splide>
+        </swiper-slide>
+        <div class="swiper-pagination" slot="pagination"></div>
+      </swiper>
     </div>
   </div>
 </template>
 
 <script>
-import { Splide, SplideSlide } from '@splidejs/vue-splide';
-import '@splidejs/splide/dist/css/themes/splide-default.min.css';
-import { mapState } from 'vuex';
+
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import 'swiper/swiper-bundle.css'
+import {mapGetters, mapState} from 'vuex';
 import anime from 'animejs';
 export default {
   name: 'ForWhoWeAre',
   components: {
-    Splide,
-    SplideSlide,
+    Swiper,
+    SwiperSlide,
     anime
+  },
+  directives: {
+    swiper: directive
   },
   data() {
     return {
-      options: {
-          type: 'loop',
-          width  : '100%',
-          gap    : '3rem',
-          arrows : false, 
-          pagination  : false,
-          perPage   : 2.6,
-          perMove   : 1,
+      swiperOptions: {
+        loop: true,
+        slidesPerView: 3,
+        pagination: {
+          el: '.swiper-pagination'
         },
-        options1: {
-          type: 'loop',
-          width  : '100%',
-          gap    : '3rem',
-          arrows : false, 
-          pagination  : false,
-          perPage   : 2.6,
-          direction  : 'ttb',
-          perMove   : 1,
-          height: 'auto'
-        },
+      }
     }
   },
+
   computed: {
+    swiper() {
+      return this.$refs.mySwiper.$swiper
+    },
+    ...mapGetters('Backend', {
+      forWho: 'FORWHO',
+    }),
     ...mapState({
-      forWho: state => state.Backend.forwho,
       russian: state => state.Common.russian,
     })
   },
