@@ -14,6 +14,7 @@
           <p>{{item.text}}</p>
       </div>
     </div>
+    <div class="swiper">
     <div class="slide-wrapper d-lg-block d-none  wow animated__animated animated__fadeInUp">
       <swiper ref="mySwiper" :options="swiperOptions">
         <swiper-slide
@@ -25,6 +26,7 @@
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
+    </div>
     </div>
   </div>
 </template>
@@ -75,6 +77,10 @@ export default {
 .ForWhoWeAre{
   height: auto;
   padding-top: 150px;
+  .swiper {
+    margin: 50px;
+  }
+
   h2{
     margin-bottom: 117px;
   }
