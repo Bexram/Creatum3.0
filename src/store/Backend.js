@@ -99,7 +99,7 @@ const actions = {
         GET_CONTENT({ commit }, id=1 ) {
             return axios({
                 method: "GET",
-                url: "http://134.0.113.121:8000/page/"+id+"/",
+                url: "http://bexram.online:8002/page/"+id+"/",
             })
             .then((response) => {
                 commit("SET_CONTENT", response.data);
@@ -114,7 +114,7 @@ const actions = {
         GET_CASES({ commit } ) {
             return axios({
                 method: "GET",
-                url: "http://134.0.113.121:8000/cases/",
+                url: "http://bexram.online:8002/cases/",
             })
             .then((response) => {
                 commit("SET_CASES", response.data);
@@ -128,7 +128,7 @@ const actions = {
         GET_CLIENTS({ commit } ) {
         return axios({
             method: "GET",
-            url: "http://134.0.113.121:8000/clients/",
+            url: "http://bexram.online:8002/clients/",
         })
             .then((response) => {
                 commit("SET_CLIENTS", response.data);
@@ -143,7 +143,7 @@ const actions = {
         GET_VACANCY({ commit } ) {
         return axios({
             method: "GET",
-            url: "http://134.0.113.121:8000/vacancy/",
+            url: "http://bexram.online:8002/vacancy/",
         })
             .then((response) => {
                 commit("SET_VACANCY", response.data);
