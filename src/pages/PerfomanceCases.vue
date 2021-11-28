@@ -13,6 +13,7 @@
         :index="index"
         :date="item.date"
         :img="item.preview"
+        :file="item.file"
         />
       </div>
     </div>
