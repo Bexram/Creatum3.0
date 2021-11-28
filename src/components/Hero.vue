@@ -110,7 +110,7 @@ export default {
     color: #020202;
     width: 1024px;
     margin-left: auto;
-    text-align: center;
+    margin-right: auto;
     margin-top: 0;
     margin-bottom: 32px;
     
