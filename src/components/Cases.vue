@@ -1,12 +1,11 @@
 <template>
-    <router-link 
+    <div
         class='w-100 case-item h-100 d-flex justify-content-center align-items-center' 
-        :to="path+index"
-        :key="index">
+        v-on:click="readFile()">
             <img :src="img" alt="">
             <h3>{{name}}</h3>
             <p>{{date}}</p>
-        </router-link>
+        </div>
 </template>
 
 <script>
@@ -14,11 +13,20 @@ export default {
 name: 'Cases',
 props: [
     'path', 'index', 'img', 'name', 'date'
-]
+],
+    methods: {
+        readFile() {
+            window.open(this.path, '_blank') //to open in new tab
+        }
+    }
 }
 </script>
 
 <style lang='scss'>
+    img{
+        height: 100% !important;
+        width: auto !important;
+    }
 .case-item{
     z-index: 10;
     position: relative;

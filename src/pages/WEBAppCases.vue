@@ -10,7 +10,7 @@
 
         <Cases
         :name="item.name"
-        :path="/WebCase/"
+        :path="item.file"
         :index="index"
         :date="item.date"
         :img="item.preview"

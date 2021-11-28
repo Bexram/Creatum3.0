@@ -9,7 +9,7 @@
       <div class="case d-flex justify-content-center align-items-center" v-for='(item,index) in perfomancecases' :key='item.name'>
         <Cases
         :name="item.name"
-        :path="/PerfomanceCase/"
+        :path="item.file"
         :index="index"
         :date="item.date"
         :img="item.preview"

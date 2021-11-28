@@ -10,7 +10,7 @@
 
         <Cases
         :name="item.name"
-        :path="/BrandingCase/"
+        :path="item.file"
         :index="index"
         :date="item.date"
         :img="item.preview"
