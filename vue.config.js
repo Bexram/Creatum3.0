@@ -1,3 +1,5 @@
-// module.exports = {
-//   assetsDir: '/static/'
-// }
+module.exports = {
+    devServer: {
+        disableHostCheck: true
+    },
+}
