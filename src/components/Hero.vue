@@ -109,8 +109,8 @@ export default {
     line-height: 120%;
     color: #020202;
     width: 1024px;
-    margin: auto;
-
+    margin-left: auto;
+    text-align: center;
     margin-top: 0;
     margin-bottom: 32px;
     
