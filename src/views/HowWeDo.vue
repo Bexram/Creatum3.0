@@ -36,8 +36,7 @@
            :key="SMM.name.split('.')[1]">
         <p>{{SMM.text.split('.')[0]}}</p>
         <div class="time">
-          <span>{{SMM.text.split('.')[1].substring(0,2)}}</span>
-          {{SMM.text.split('.')[1].replace(/[0-9]/g, '')}}
+          <span>{{SMM.text.split('.')[1]}}</span>
 
           <!-- <span class='submit'></span> -->
         </div>
@@ -47,8 +46,7 @@
         v-if="SMM.name=='SMMtotal'">
         <p>Итого</p>
         <div class="time">
-          <span>{{SMM.text.substring(0,2)}}</span>
-          {{SMM.text.replace(/[0-9]/g, '')}}
+          <span>{{SMM.text.split('.')[1]}}</span>
         </div>
         </div>
           </template>
@@ -60,8 +58,7 @@
             :key="web_app.name.split('.')[1]">
         <p>{{web_app.text.split('.')[0]}}</p>
         <div class="time">
-          <span>{{web_app.text.split('.')[1].substring(0,2)}}</span>
-          {{web_app.text.split('.')[1].replace(/[0-9]/g, '')}}
+          <span>{{web_app.text.split('.')[1]}}</span>
         </div>
         </div>
 
@@ -69,8 +66,7 @@
              v-if="web_app.name=='Webtotal'">
         <p>Итого</p>
           <div class="time">
-            <span>{{web_app.text.substring(0,2)}}</span>
-            {{web_app.text.replace(/[0-9]/g, '')}}
+            <span>{{web_app.text.split('.')[1]}}</span>
           </div>
         </div>
         </template>
@@ -82,8 +78,7 @@
         :key="branding.name.split('.')[1]">
           <p>{{branding.text.split('.')[0]}}</p>
         <div class="time">
-          <span>{{branding.text.split('.')[1].substring(0,2)}}</span>
-          {{branding.text.split('.')[1].replace(/[0-9]/g, '')}}
+          <span>{{branding.text.split('.')[1]}}</span>
         </div>
         </div>
 
@@ -92,8 +87,7 @@
         >
         <p>Итого</p>
           <div class="time">
-            <span>{{branding.text.substring(0,2)}}</span>
-            {{branding.text.replace(/[0-9]/g, '')}}
+            <span>{{branding.text.split('.')[1]}}</span>
           </div>
         </div>
         </template>
@@ -105,8 +99,7 @@
          :key="performance.name.split('.')[1]">
           <p>{{performance.text.split('.')[0]}}</p>
         <div class="time">
-          <span>{{performance.text.split('.')[1].substring(0,2)}}</span>
-          {{performance.text.split('.')[1].replace(/[0-9]/g, '')}}
+          <span>{{performance.text.split('.')[1]}}</span>
         </div>
         </div>
 
@@ -115,8 +108,7 @@
         >
         <p>Итого</p>
           <div class="time">
-            <span>{{performance.text.substring(0,2)}}</span>
-            {{performance.text.replace(/[0-9]/g, '')}}
+            <span>{{performance.text.split('.')[1]}}</span>
           </div>
         </div>
         </template>
@@ -227,7 +219,7 @@ export default {
       border-radius: 40px;
       width: auto;
       span{
-        font-weight: 800;
+        font-weight: 600;
         font-size: 16px;
         line-height: 20px;
       }

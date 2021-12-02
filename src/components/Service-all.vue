@@ -75,7 +75,7 @@ export default {
     height: auto;
     .item{
       width: 100%;
-      height: 245px;
+      height: 270px;
       padding: 32px 16px;
       margin-bottom: 3px;
       &:nth-child(2){
