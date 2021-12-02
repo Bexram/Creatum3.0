@@ -99,7 +99,7 @@ const actions = {
         GET_CONTENT({ commit }, id=1 ) {
             return axios({
                 method: "GET",
-                url: "http://bexram.online:8002/page/"+id+"/",
+                url: "https://creatum-backend.bexram.online/page/"+id+"/",
             })
             .then((response) => {
                 commit("SET_CONTENT", response.data);
@@ -114,7 +114,7 @@ const actions = {
         GET_CASES({ commit } ) {
             return axios({
                 method: "GET",
-                url: "http://bexram.online:8002/cases/",
+                url: "https://creatum-backend.bexram.online/cases/",
             })
             .then((response) => {
                 commit("SET_CASES", response.data);
@@ -128,7 +128,7 @@ const actions = {
         GET_CLIENTS({ commit } ) {
         return axios({
             method: "GET",
-            url: "http://bexram.online:8002/clients/",
+            url: "https://creatum-backend.bexram.online/clients/",
         })
             .then((response) => {
                 commit("SET_CLIENTS", response.data);
@@ -143,7 +143,7 @@ const actions = {
         GET_VACANCY({ commit } ) {
         return axios({
             method: "GET",
-            url: "http://bexram.online:8002/vacancy/",
+            url: "https://creatum-backend.bexram.online/vacancy/",
         })
             .then((response) => {
                 commit("SET_VACANCY", response.data);
