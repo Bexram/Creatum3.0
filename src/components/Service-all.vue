@@ -9,8 +9,8 @@
     <h3>{{Service.name}}</h3>
     <p class='service_description'>{{Service.text.split('/')[0]}}</p>
     <router-link :to="Service.text.split('/')[1]">
-      <button v-if="russian" class='button button_purple'>Подробнее</button>
-      <button v-if="!russian" class='button button_purple'>More</button>
+      <button v-if="russian" class='srv button button_purple'>Подробнее</button>
+      <button v-if="!russian" class='srv button button_purple'>More</button>
     </router-link>
     </div>
   </div>
@@ -44,6 +44,9 @@ export default {
 
 .Service{
   height: 100vh;
+  .srv{
+    margin-top: 10px;
+  }
   .item{
     width: 24.5%;
     position: relative;

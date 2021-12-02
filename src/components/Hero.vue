@@ -105,6 +105,7 @@ export default {
     }
   }
   h2{
+    text-align: center !important;
     font-size: 62px;
     line-height: 120%;
     color: #020202;

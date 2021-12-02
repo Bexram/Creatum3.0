@@ -6,15 +6,15 @@
       <form v-if="russian" action="" class='d-flex justify-content-between flex-wrap' @submit.prevent="submitForm" method="post" >
         <input class='req short' type="text" placeholder="Полное имя" v-model="full_name">
         <input class='short' type="text" placeholder="Ссылка на сайт компании" v-model="url">
-        <input class='req short' type="text" placeholder="Э-почта" v-model="email">
+        <input class='req short' type="text" placeholder="Эл-почта" v-model="email">
         <select class='req short' v-model="industry">
           <option value="" disabled>Выберите направление</option>
           <option value="SMM">SMM</option>
-          <option value="Web & Apps">Web & Apps</option>
-          <option value="Branding">Branding</option>
-          <option value="Perfomance">Perfomance</option>
+          <option value="Web & Apps">Сайты и приложения</option>
+          <option value="Branding">Брендинг</option>
+          <option value="Perfomance">Продвижение</option>
         </select>
-        <textarea class='big' placeholder="Text area"  rows="4" cols="50" v-model="text">
+        <textarea class='big' placeholder="Текст"  rows="4" cols="50" v-model="text">
         </textarea>
         <div class='w-100 d-flex justify-content-lg-end justify-content-start'>
           <button class='button button_purple' type="submit">Отправить</button>
@@ -32,7 +32,7 @@
           <option value="Branding">Branding</option>
           <option value="Perfomance">Perfomance</option>
         </select>
-        <textarea class='big' placeholder="Text area"  rows="4" cols="50" v-model="text">
+        <textarea class='big' placeholder="Text"  rows="4" cols="50" v-model="text">
         </textarea>
         <div class='w-100 d-flex justify-content-lg-end justify-content-start'>
           <button class='button button_purple' type="submit">Submit</button>

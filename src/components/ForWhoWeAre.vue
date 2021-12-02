@@ -17,14 +17,15 @@
     <div class="swiper">
     <div class="slide-wrapper d-lg-block d-none  wow animated__animated animated__fadeInUp">
       <swiper ref="mySwiper" :options="swiperOptions">
-        <swiper-slide
+        <swiper-slide class="card"
         v-for="item in forWho"
         :key=item.id
         >
           <h3>{{item.name}}</h3>
           <p>{{item.text}}</p>
         </swiper-slide>
-        <div class="swiper-pagination" slot="pagination"></div>
+        <div class="swiper-button-prev" slot="button-prev"></div>
+        <div class="swiper-button-next" slot="button-next"></div>
       </swiper>
     </div>
     </div>
@@ -50,10 +51,15 @@ export default {
   data() {
     return {
       swiperOptions: {
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
         loop: true,
         slidesPerView: 3,
         pagination: {
-          el: '.swiper-pagination'
+          el: '.swiper-pagination',
+          clickable: true
         },
       }
     }
@@ -78,9 +84,13 @@ export default {
   height: auto;
   padding-top: 150px;
   .swiper {
-    margin: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
   }
-
+  .card{
+    margin-right: 10px;
+    margin-left: 10px;
+  }
   h2{
     margin-bottom: 117px;
   }
