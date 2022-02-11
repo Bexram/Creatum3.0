@@ -64,7 +64,7 @@ export default {
     submitForm() {
       axios({
         method: 'post',
-        url: 'http://134.0.113.121:8000/form/',
+        url: 'https://creatum-backend.bexram.online/form/',
         data: {
           name: this.full_name,
           email: this.email,
