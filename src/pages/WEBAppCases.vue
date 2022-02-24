@@ -37,6 +37,9 @@ export default {
       webcases: 'WEBCASES',
     })
   },
+  created() {
+    this.$store.dispatch('Backend/GET_CASES')
+  },
     mounted () {
   window.scrollTo(0, 0);
 },

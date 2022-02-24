@@ -114,7 +114,11 @@ data() {
   mounted () {
   window.scrollTo(0, 0);
 },
-  methods: {
+    created() {
+        this.$store.dispatch('Backend/GET_VACANCY')
+    },
+
+    methods: {
     applyForm() {
       axios({
         method: 'post',

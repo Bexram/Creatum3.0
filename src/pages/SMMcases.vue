@@ -41,6 +41,9 @@ export default {
       smmcases: 'SMMCASES',
     })
   },
+  created() {
+    this.$store.dispatch('Backend/GET_CASES')
+  },
 }
 </script>
 
