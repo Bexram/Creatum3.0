@@ -45,12 +45,12 @@
       </div>
         <div class="navigation">
           <ul class='d-flex '>
-        <li><button class='d-block request button button_purple' v-if="russian" v-on:click="goLang">
-          Ru
-        </button>
-        <button class='d-block request button button_purple' v-if="!russian" v-on:click="goLang">
-          En
-        </button></li>
+<!--        <li><button class='d-block request button button_purple' v-if="russian" v-on:click="goLang">-->
+<!--          Ru-->
+<!--        </button>-->
+<!--        <button class='d-block request button button_purple' v-if="!russian" v-on:click="goLang">-->
+<!--          En-->
+<!--        </button></li>-->
             <li><button v-if="russian" @click='goToBlock' class='d-block request button button_purple' href="#GladToWork">Заявка</button>
       <button v-if="!russian" @click='goToBlock' class='d-block request button button_purple' href="#GladToWork">Request</button></li>
           </ul>
@@ -63,7 +63,8 @@
       </svg>
 
       <div class='d-flex justify-content-between'>
-        <button @click='goToBlock' class='d-block request button button_purple' href="#GladToWork">Заявка</button>
+        <button v-if="russian" @click='goToBlock' class='d-block request button button_purple' href="#GladToWork">Заявка</button>
+        <button v-if="!russian" @click='goToBlock' class='d-block request button button_purple' href="#GladToWork">Request</button>
         <svg @click='openMobileMenu' width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">     
           <path d="M5.5 12.8333H38.5" stroke="#020202" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M5.5 22H38.5" stroke="#020202" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

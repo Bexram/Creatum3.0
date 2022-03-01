@@ -26,7 +26,7 @@ export default {
   },
 
   created() {
-    this.$store.dispatch('Backend/GET_CONTENT')
+    this.$store.dispatch('Backend/GET_CONTENT',2)
     this.$store.dispatch('Backend/GET_CASES')
     this.$store.dispatch('Backend/GET_CLIENTS')
     this.$store.dispatch('Backend/GET_VACANCY')

@@ -9,12 +9,12 @@
       </router-link>
 
       <div class='d-flex justify-content-between'>
-        <li><button class='d-block request button button_yellow_current' v-if="russian" v-on:click="goLang">
-          Ru
-        </button>
-          <button class='d-block request button button_yellow_current' v-if="!russian" v-on:click="goLang">
-            En
-          </button></li>
+<!--        <li><button class='d-block request button button_yellow_current' v-if="russian" v-on:click="goLang">-->
+<!--          Ru-->
+<!--        </button>-->
+<!--          <button class='d-block request button button_yellow_current' v-if="!russian" v-on:click="goLang">-->
+<!--            En-->
+<!--          </button></li>-->
         <button v-if="russian" class='d-block request button button_yellow_current' href="#GladToWork">Заявка</button>
         <button v-if="!russian" class='d-block request button button_yellow_current' href="#GladToWork">Request</button>
         <div @click="close" class="closeNav d-flex justify-content-center align-items-center">

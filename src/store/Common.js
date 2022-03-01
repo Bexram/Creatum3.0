@@ -6,7 +6,7 @@ const Common = {
       mobileMenu:{
         isActive: false
       },
-      russian: true
+      russian: false
     },
     mutations: {
       changeLang(state)

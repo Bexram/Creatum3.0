@@ -44,7 +44,7 @@
 
         <div class="cell cell_total d-flex align-items-center justify-content-between"
         v-if="SMM.name=='SMMtotal'">
-        <p>Итого</p>
+        <p>{{SMM.text.split('.')[0]}}</p>
         <div class="time">
           <span>{{SMM.text.split('.')[1]}}</span>
         </div>
