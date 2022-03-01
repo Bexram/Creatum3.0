@@ -62,13 +62,13 @@ export default {
   },
   methods: {
     ...mapMutations('Common',['changeLang']),
-    goLang: function(){
-      this.changeLang()
-      if (this.russian)
-        this.$store.dispatch('Backend/GET_CONTENT',1)
-      else
-        this.$store.dispatch('Backend/GET_CONTENT',2)
-    },
+    // goLang: function(){
+    //   this.changeLang()
+    //   if (this.russian)
+    //     this.$store.dispatch('Backend/GET_CONTENT',1)
+    //   else
+    //     this.$store.dispatch('Backend/GET_CONTENT',2)
+    // },
     close: function(){
       this.MenuState.isActive = !this.MenuState.isActive
     },
