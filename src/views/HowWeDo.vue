@@ -64,7 +64,7 @@
 
         <div class="cell cell_total d-flex align-items-center justify-content-between"
              v-if="web_app.name=='Webtotal'">
-        <p>Итого</p>
+        <p>{{web_app.text.split('.')[0]}}</p>
           <div class="time">
             <span>{{web_app.text.split('.')[1]}}</span>
           </div>
@@ -85,7 +85,7 @@
         <div class="cell cell_total d-flex align-items-center justify-content-between"
              v-if="branding.name=='Brandingtotal'"
         >
-        <p>Итого</p>
+        <p>{{branding.text.split('.')[0]}}</p>
           <div class="time">
             <span>{{branding.text.split('.')[1]}}</span>
           </div>
@@ -106,7 +106,7 @@
         <div class="cell cell_total d-flex align-items-center justify-content-between"
              v-if="performance.name=='Perfomancetotal'"
         >
-        <p>Итого</p>
+        <p>{{performance.text.split('.')[0]}}</p>
           <div class="time">
             <span>{{performance.text.split('.')[1]}}</span>
           </div>
