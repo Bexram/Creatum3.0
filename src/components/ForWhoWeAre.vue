@@ -90,6 +90,7 @@ export default {
   .card{
     margin-right: 10px;
     margin-left: 10px;
+    border: 0px;
   }
   h2{
     margin-bottom: 117px;
