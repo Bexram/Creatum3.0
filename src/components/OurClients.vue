@@ -37,7 +37,7 @@
         <splide-slide>
           <div class="d-flex flex-wrap justify-content-between justify-content-lg-start">
             <div v-for="icon in icons" :key=icon.id class='icon-icon'>
-              <div 
+              <div
               class='d-flex align-items-center justify-content-center icon-cell'>
                 <img class='d-block' :src="icon.logo" alt=""></div>
             </div>
@@ -48,8 +48,8 @@
             <div v-for="icon in icons" :key=icon.id>
               <div
                 class='d-flex align-items-center justify-content-center '
-                :class="{'icon-cell': icon.works=='1',
-                 'grey-block' : icon.works!='1'} " >
+                :class="{'icon-cell': contains(icon.works,1) == true ,
+                 'grey-block' : contains(icon.works,1) == false } " >
                  <img class='d-block' :src="icon.logo" alt=""></div>
             </div>
           </div>
@@ -59,8 +59,8 @@
             <div v-for="icon in icons" :key=icon.id>
               <div
               class='d-flex align-items-center justify-content-center'
-              :class="{'icon-cell': icon.works=='2',
-               'grey-block' : icon.works!='2' }"><img class='d-block' :src="icon.logo" alt=""></div>
+              :class="{'icon-cell': contains(icon.works,2) == true,
+               'grey-block' :contains(icon.works,2) == false }"><img class='d-block' :src="icon.logo" alt=""></div>
             </div>
           </div>
         </splide-slide>
@@ -69,8 +69,8 @@
           <div class="d-flex flex-wrap justify-content-between justify-content-lg-start">
             <div v-for="icon in icons" :key=icon.id >
               <div
-              :class="{'d-flex align-items-center justify-content-center icon-cell': icon.works=='3',
-               'grey-block' : icon.works!='3' }">
+              :class="{'d-flex align-items-center justify-content-center icon-cell': contains(icon.works,3) == true,
+               'grey-block' : contains(icon.works,3) == false }">
                 <img class='d-block' :src="icon.logo" alt=""></div>
             </div>
           </div>
@@ -80,8 +80,8 @@
           <div class="d-flex flex-wrap justify-content-between justify-content-lg-start">
             <div v-for="icon in icons" :key=icon.id >
               <div
-              :class="{'d-flex align-items-center justify-content-center icon-cell': icon.works=='4',
-               'grey-block' : icon.works!='4' }">
+              :class="{'d-flex align-items-center justify-content-center icon-cell': contains(icon.works,4) == true,
+               'grey-block' : contains(icon.works,4) == false }">
                 <img class='d-block' :src="icon.logo" alt=""></div>
             </div>
           </div>
@@ -133,7 +133,7 @@ export default {
               focus    : 'center',
 	            perPage  : 3,
 	            trimSpace: false,
-            
+
           }
         }
       },
@@ -143,6 +143,12 @@ export default {
   mounted() {
     this.$refs.primary.sync( this.$refs.secondary.splide );
     let SMMIcons = false;
+  },
+  methods: {
+    contains(arr, elem) {
+
+        return arr.find((i) => i === elem) !== undefined;
+}
   },
   computed: {
     ...mapGetters('Backend', {
@@ -164,7 +170,7 @@ export default {
     margin-bottom: 52px;
   }
   .icon-icon{
-    width:150px; 
+    width:150px;
     height: 150px
   }
   .icon-cell{
